@@ -1,0 +1,163 @@
+# ======================================================
+#   Ивент «Великая Тыква» — настройки
+#   Тексты используют формат MiniMessage (цвета, градиенты)
+# ======================================================
+
+event:
+  world: "world"            # мир, в котором появляется тыква
+  duration-seconds: 900     # общая длительность ивента (15 минут)
+  prepare-seconds: 180      # время до «открытия» тыкв (3 минуты)
+
+location:
+  center-x: 0               # центр области для случайных координат
+  center-z: 0
+  min-radius: 300           # минимальное расстояние от центра
+  max-radius: 2000          # максимальное расстояние от центра
+  max-height-difference: 3  # насколько ровным должно быть место
+
+pumpkins:
+  min-distance: 9           # тыквы появляются в кольце вокруг Великой Тыквы
+  max-distance: 20
+  max-alive: 15             # сколько тыкв может стоять одновременно
+  initial: 8                # сколько тыкв появляется в момент открытия
+  spawn-interval-seconds: 4 # как часто появляется новая тыква
+
+rewards:
+  rolls-per-pumpkin: 2      # сколько случайных наград выпадает за 1 тыкву
+  per-player-limit: 20      # максимум тыкв на игрока за ивент (0 = без лимита)
+  xp-per-pumpkin: 3
+  # вес (weight) — шанс выпадения: чем больше, тем чаще
+  items:
+    - { material: COAL, min: 2, max: 5, weight: 30 }
+    - { material: IRON_INGOT, min: 1, max: 3, weight: 25 }
+    - { material: COPPER_INGOT, min: 2, max: 5, weight: 15 }
+    - { material: GOLD_INGOT, min: 1, max: 2, weight: 12 }
+    - { material: REDSTONE, min: 2, max: 6, weight: 12 }
+    - { material: LAPIS_LAZULI, min: 2, max: 5, weight: 8 }
+    - { material: BREAD, min: 2, max: 4, weight: 15 }
+    - { material: COOKED_BEEF, min: 2, max: 4, weight: 12 }
+    - { material: PUMPKIN_PIE, min: 1, max: 3, weight: 10 }
+    - { material: EXPERIENCE_BOTTLE, min: 1, max: 2, weight: 6 }
+    - { material: EMERALD, min: 1, max: 1, weight: 4 }
+    - { material: DIAMOND, min: 1, max: 1, weight: 2 }
+
+waves:
+  interval-seconds: 180     # раз в 3 минуты — подсветка и тьма
+  warning-seconds: 5        # предупреждение за N секунд до волны
+  glow-seconds: 20          # сколько светятся игроки
+  darkness-seconds: 12      # сколько длится эффект тьмы
+  only-event-world: true    # true = только игроки мира ивента, false = все миры
+
+protection:
+  enabled: true             # в зоне ивента нельзя ломать/ставить ничего, кроме тыкв
+  radius: 30
+
+auto-start:
+  enabled: false            # автозапуск по таймеру
+  interval-minutes: 120
+  min-players: 1
+
+# Звуки (id из Minecraft, например "entity.wither.spawn")
+sounds:
+  appear: "entity.wither.spawn"
+  countdown: "block.note_block.pling"
+  open: "entity.ender_dragon.growl"
+  warning: "entity.warden.heartbeat"
+  wave: "entity.elder_guardian.curse"
+  collect: "entity.experience_orb.pickup"
+  last-minute: "block.bell.use"
+  finish: "ui.toast.challenge_complete"
+
+messages:
+  prefix: "<gradient:#ff7518:#8a2be2><bold>ВЕЛИКАЯ ТЫКВА</bold></gradient> <dark_gray>»</dark_gray> "
+
+  # Плейсхолдеры: <cx> <cy> <cz> — координаты, <prep> — время до открытия, <total> — длительность
+  spawned:
+    - ""
+    - " <gradient:#8a2be2:#ff7518><strikethrough>                                                  </strikethrough></gradient>"
+    - ""
+    - "          <gradient:#ffb347:#ff7518><bold>☠  ВЕЛИКАЯ ТЫКВА ПРОБУДИЛАСЬ  ☠</bold></gradient>"
+    - ""
+    - "   <gray>Небо потемнело, земля содрогнулась, и из неё выросла"
+    - "   <gold>гигантская тыква<gray>... Её глаза горят в ночи."
+    - ""
+    - "   <dark_gray>»</dark_gray> <gray>Координаты: <yellow>X <white><cx> <dark_gray>/ <yellow>Y <white><cy> <dark_gray>/ <yellow>Z <white><cz>"
+    - "   <dark_gray>»</dark_gray> <gray>Тыквы появятся через: <light_purple><prep>"
+    - "   <dark_gray>»</dark_gray> <gray>Длительность ивента: <white><total>"
+    - ""
+    - "   <dark_gray>Подсказка: <gray>команда <yellow>/тыква где <gray>покажет направление."
+    - ""
+    - " <gradient:#8a2be2:#ff7518><strikethrough>                                                  </strikethrough></gradient>"
+    - ""
+
+  opened:
+    - ""
+    - " <gradient:#ff7518:#8a2be2><strikethrough>                                                  </strikethrough></gradient>"
+    - ""
+    - "              <gradient:#ffb347:#ff7518><bold>✦  ТЫКВЫ ОТКРЫЛИСЬ!  ✦</bold></gradient>"
+    - ""
+    - "   <gray>Вокруг Великой Тыквы выросли <gold>волшебные тыквы<gray>."
+    - "   <gray>Ломайте их и получайте <yellow>ресурсы<gray>!"
+    - "   <gray>Осталось времени: <white><time>"
+    - ""
+    - " <gradient:#ff7518:#8a2be2><strikethrough>                                                  </strikethrough></gradient>"
+    - ""
+
+  prep-reminder: "<prefix><gray>До появления тыкв осталось <light_purple><time><gray>."
+  last-minute: "<prefix><red><bold>Последняя минута!</bold> <gray>Успейте собрать тыквы!"
+
+  title-spawned: "<gradient:#ff7518:#8a2be2><bold>ВЕЛИКАЯ ТЫКВА</bold></gradient>"
+  subtitle-spawned: "<gray>Она проснулась... <yellow>X: <cx>  Z: <cz>"
+  title-opened: "<gradient:#ffb347:#ff7518><bold>ТЫКВЫ ОТКРЫЛИСЬ!</bold></gradient>"
+  subtitle-opened: "<gray>Ломайте тыквы и собирайте ресурсы"
+  title-warning: "<dark_purple><bold>ТЬМА ПРИБЛИЖАЕТСЯ...</bold>"
+  subtitle-warning: "<gray>Через <red><time> <gray>сек. вы станете видны всем"
+  title-wave: "<dark_red><bold>НОЧЬ ПРОБУЖДАЕТСЯ</bold>"
+  subtitle-wave: "<gray>Вы подсвечены и почти ничего не видите!"
+
+  warning: "<prefix><dark_purple>Тьма близко... <gray>Через <red><time> <gray>сек. все игроки будут подсвечены!"
+  wave:
+    - "<prefix><dark_red><bold>ТЬМА!</bold> <gray>Все игроки подсвечены на <white><glow> <gray>сек. и ослеплены на <white><dark> <gray>сек."
+
+  bossbar-prep: "<gradient:#8a2be2:#ff7518><bold>Великая Тыква</bold></gradient> <dark_gray>|</dark_gray> <gray>тыквы появятся через <white><time>"
+  bossbar-active: "<gradient:#ff7518:#ffb347><bold>Ночь Великой Тыквы</bold></gradient> <dark_gray>|</dark_gray> <gray>осталось <white><time> <dark_gray>|</dark_gray> <gray>тыкв: <gold><alive>"
+  actionbar-countdown: "<gray>Тыквы появятся через <yellow><time> <gray>сек."
+
+  collected: "<gold>Тыква собрана! <dark_gray>(<white><count><dark_gray>/<white><limit><dark_gray>) <gray>Награда: <reward>"
+  limit-reached: "<red>Вы уже собрали максимум тыкв: <white><limit><red>!"
+  structure-protected: "<red>Великую Тыкву сломать нельзя!"
+  zone-protected: "<red>В зоне ивента можно ломать только тыквы!"
+
+  finished:
+    - ""
+    - " <gradient:#8a2be2:#ff7518><strikethrough>                                                  </strikethrough></gradient>"
+    - ""
+    - "            <gradient:#ffb347:#ff7518><bold>☠  ВЕЛИКАЯ ТЫКВА УСНУЛА  ☠</bold></gradient>"
+    - ""
+    - "   <gray>Ночь закончилась. Лучшие сборщики тыкв:"
+    - ""
+  top-line: "   <gold>#<place> <white><player> <dark_gray>—</dark_gray> <yellow><count> <gray>тыкв"
+  no-participants: "   <gray>Никто не собрал ни одной тыквы."
+  finished-footer:
+    - ""
+    - "   <gray>Спасибо всем за участие! До следующего Хэллоуина."
+    - ""
+    - " <gradient:#8a2be2:#ff7518><strikethrough>                                                  </strikethrough></gradient>"
+    - ""
+  stopped: "<prefix><red>Ивент «Великая Тыква» остановлен администратором."
+
+  # Команды
+  usage: "<prefix><gray>Использование: <yellow>/тыква [start [x z]|stop|status|where|reload]"
+  no-permission: "<prefix><red>У вас нет прав на эту команду."
+  players-only: "<prefix><red>Эта команда только для игроков."
+  already-running: "<prefix><red>Ивент уже идёт!"
+  not-running: "<prefix><gray>Сейчас ивент не проходит."
+  no-world: "<prefix><red>Мир из config.yml не найден!"
+  no-spot: "<prefix><red>Не удалось найти подходящее место. Измените location.* в config.yml или укажите координаты."
+  reloaded: "<prefix><green>Конфигурация перезагружена."
+  where: "<prefix><gray>Великая Тыква: <yellow>X <white><cx> <yellow>Y <white><cy> <yellow>Z <white><cz> <dark_gray>| <gold><arrow> <white><dist> <gray>м"
+  where-other-world: "<prefix><gray>Великая Тыква в другом мире: <yellow><world> <dark_gray>(<white><cx> <cy> <cz><dark_gray>)"
+  status-idle: "<prefix><gray>Ивент сейчас не идёт."
+  status-running: "<prefix><gray>Ивент идёт. Фаза: <white><phase><gray>, осталось <white><time><gray>, тыкв на земле: <gold><alive>"
+  phase-prep: "подготовка"
+  phase-active: "сбор тыкв"

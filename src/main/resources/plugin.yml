@@ -1,0 +1,20 @@
+name: PumpkinEvent
+version: '${version}'
+main: dev.pumpkin.event.PumpkinEventPlugin
+api-version: '1.21'
+description: Хэллоуинский ивент «Великая Тыква»
+commands:
+  pumpkin:
+    description: Управление ивентом «Великая Тыква»
+    usage: /<command> [start|stop|status|where|reload]
+    aliases: [тыква, pumpkins]
+permissions:
+  pumpkinevent.admin:
+    description: Запуск, остановка и перезагрузка ивента
+    default: op
+  pumpkinevent.bypass:
+    description: Можно строить и ломать блоки в зоне ивента
+    default: op
+  pumpkinevent.where:
+    description: Команда /тыква где
+    default: true
